@@ -1,0 +1,152 @@
+:root {
+  --bg: #14101d;
+  --panel: #1e1830;
+  --panel2: #262044;
+  --line: #3a2f5e;
+  --text: #f2eefc;
+  --muted: #b3a8d4;
+  --pink: #ff4d8d;
+  --teal: #2dd4bf;
+  --gold: #f2c94c;
+  --silver: #cfd6dd;
+  --bronze: #e09a5f;
+  --platinum: #bfe8ff;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
+  line-height: 1.45;
+}
+a { color: var(--teal); }
+button, select, input { font: inherit; color: inherit; }
+button { cursor: pointer; }
+
+.masthead {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: space-between;
+  align-items: end;
+  padding: 20px 24px 14px;
+  background: linear-gradient(120deg, #2a1140 0%, #4d1550 55%, #0e3a4d 100%);
+  border-bottom: 3px solid var(--pink);
+}
+.masthead h1 { margin: 0; font-size: 30px; letter-spacing: 0.5px; }
+.sub { margin: 4px 0 0; color: #e8d9f5; font-size: 14px; }
+.progress-wrap { min-width: 280px; flex: 1 1 320px; max-width: 520px; }
+.progress-line { display: flex; justify-content: space-between; gap: 12px; font-size: 14px; }
+.progress-bar { height: 12px; background: #0c0916; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; margin-top: 6px; }
+.progress-bar > div { height: 100%; width: 0; background: linear-gradient(90deg, var(--pink), var(--teal)); }
+
+.tabs { display: flex; gap: 8px; padding: 12px 24px 0; }
+.tabs button {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-bottom: none;
+  border-radius: 8px 8px 0 0;
+  padding: 9px 16px;
+  color: var(--muted);
+}
+.tabs button.active { background: var(--panel2); color: var(--text); border-color: var(--pink); }
+
+.view { padding: 16px 24px 24px; }
+.hidden { display: none; }
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 12px;
+  margin-bottom: 10px;
+}
+#search { flex: 1 1 220px; padding: 8px 10px; border-radius: 8px; border: 1px solid var(--line); background: #0c0916; }
+.kind-row { display: flex; flex-wrap: wrap; gap: 6px; }
+.kind-row button {
+  background: #0c0916; border: 1px solid var(--line); border-radius: 999px; padding: 6px 12px; color: var(--muted);
+}
+.kind-row button.active { background: var(--pink); border-color: var(--pink); color: #fff; }
+.field { font-size: 13px; color: var(--muted); display: flex; gap: 6px; align-items: center; }
+.field select { background: #0c0916; border: 1px solid var(--line); border-radius: 8px; padding: 7px; }
+.spoiler-toggle { font-size: 14px; display: flex; gap: 6px; align-items: center; }
+.io-row { display: flex; gap: 8px; flex-wrap: wrap; margin-left: auto; }
+.io-row button, .import-btn {
+  background: var(--panel2); border: 1px solid var(--line); border-radius: 8px; padding: 8px 12px; font-size: 14px;
+}
+.import-btn input { display: none; }
+.list-note { color: var(--muted); font-size: 14px; margin: 4px 0 12px; }
+
+.columns { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 16px; align-items: start; }
+.trophy-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.trophy-row {
+  display: grid;
+  grid-template-columns: 28px 1fr auto;
+  gap: 10px;
+  align-items: start;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 10px 12px;
+  text-align: left;
+  width: 100%;
+}
+.trophy-row:hover { border-color: var(--pink); }
+.trophy-row.selected { border-color: var(--teal); box-shadow: 0 0 0 1px var(--teal); }
+.trophy-row.earned { opacity: 0.72; }
+.trophy-row input { width: 20px; height: 20px; margin-top: 2px; accent-color: var(--teal); }
+.trophy-name { font-weight: 700; font-size: 15px; }
+.trophy-desc { color: var(--muted); font-size: 13px; }
+.trophy-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+.tag {
+  font-size: 11px; text-transform: uppercase; letter-spacing: 0.4px;
+  border: 1px solid var(--line); border-radius: 999px; padding: 2px 8px; color: var(--muted);
+}
+.tag.missable { border-color: #ff5d5d; color: #ff8a8a; }
+.tag.hidden-flag { border-color: var(--gold); color: var(--gold); }
+.grade-badge { font-size: 12px; font-weight: 700; text-transform: capitalize; border-radius: 999px; padding: 3px 10px; white-space: nowrap; }
+.grade-platinum { background: #d6efff; color: #0b3a52; }
+.grade-gold { background: var(--gold); color: #4a3400; }
+.grade-silver { background: var(--silver); color: #26313a; }
+.grade-bronze { background: var(--bronze); color: #3d2200; }
+.count-label { font-size: 12px; color: var(--teal); margin-top: 4px; }
+
+.detail {
+  position: sticky; top: 12px;
+  background: var(--panel2);
+  border: 1px solid var(--pink);
+  border-radius: 12px;
+  padding: 16px;
+}
+.detail h2 { margin: 0 0 4px; font-size: 22px; }
+.detail .official { color: var(--muted); font-size: 14px; margin: 0 0 10px; }
+.detail h3 { margin: 14px 0 6px; font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--teal); }
+.detail p { margin: 0 0 10px; }
+.detail .sources { font-size: 13px; }
+.detail .sources li { margin-bottom: 4px; }
+.detail .empty { color: var(--muted); }
+.stage-label { font-size: 13px; color: var(--gold); }
+
+.stages { display: grid; gap: 14px; }
+.stage-card { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 16px; }
+.stage-card h2 { margin: 0 0 4px; }
+.stage-card .hours { color: var(--teal); font-size: 13px; margin: 0 0 8px; }
+.stage-trophies { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+.stage-trophies span { background: #0c0916; border: 1px solid var(--line); border-radius: 999px; padding: 3px 10px; font-size: 12px; }
+.roadmap-intro { color: var(--muted); max-width: 70ch; }
+
+.missable-list { display: grid; gap: 12px; margin-bottom: 20px; }
+.missable-card { background: var(--panel); border: 1px solid #ff5d5d; border-radius: 12px; padding: 14px 16px; }
+.warnings li { margin-bottom: 8px; max-width: 80ch; }
+h2, h3 { color: var(--text); }
+footer { padding: 8px 24px 28px; color: var(--muted); font-size: 13px; }
+
+@media (max-width: 900px) {
+  .columns { grid-template-columns: 1fr; }
+  .detail { position: static; }
+}

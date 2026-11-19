@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Leonida Trophy Guide — GTA VI (PS5)</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="masthead">
+  <div>
+    <h1>Leonida Trophy Guide</h1>
+    <p class="sub">Grand Theft Auto VI · PlayStation 5 · 55 trophies — 1 platinum, 2 gold, 6 silver, 46 bronze · 28 hidden · 0 online</p>
+  </div>
+  <div class="progress-wrap" aria-label="Overall progress">
+    <div class="progress-line"><strong id="progressText">0 of 55 earned</strong><span id="gradeCounts"></span></div>
+    <div class="progress-bar"><div id="progressFill"></div></div>
+  </div>
+</header>
+
+<nav class="tabs" aria-label="Sections">
+  <button id="tabChecklist" type="button" class="active">Checklist</button>
+  <button id="tabRoadmap" type="button">Roadmap to the platinum</button>
+  <button id="tabMissables" type="button">Missables &amp; warnings</button>
+</nav>
+
+<section id="viewChecklist" class="view">
+  <div class="toolbar">
+    <input id="search" type="search" placeholder="Search a trophy by name…" aria-label="Search trophies">
+    <div class="kind-row" id="kindRow" role="group" aria-label="Filter by kind">
+      <button type="button" data-kind="all" class="active">All</button>
+      <button type="button" data-kind="story">Story</button>
+      <button type="button" data-kind="missable">Missable</button>
+      <button type="button" data-kind="collectibles">Collectibles</button>
+      <button type="button" data-kind="activities">Activities</button>
+      <button type="button" data-kind="online">Online</button>
+    </div>
+    <label class="field">Grade
+      <select id="gradeFilter">
+        <option value="all">All grades</option>
+        <option value="platinum">Platinum</option>
+        <option value="gold">Gold</option>
+        <option value="silver">Silver</option>
+        <option value="bronze">Bronze</option>
+      </select>
+    </label>
+    <label class="field">Show
+      <select id="earnedFilter">
+        <option value="all">All trophies</option>
+        <option value="todo">Not earned yet</option>
+        <option value="earned">Earned only</option>
+      </select>
+    </label>
+    <label class="spoiler-toggle"><input id="spoilerToggle" type="checkbox"> Spoiler-free mode</label>
+    <div class="io-row">
+      <button id="exportBtn" type="button">Export progress</button>
+      <label class="import-btn">Import progress <input id="importFile" type="file" accept="application/json,.json"></label>
+      <button id="resetBtn" type="button">Reset</button>
+    </div>
+  </div>
+  <p id="listNote" class="list-note"></p>
+  <div class="columns">
+    <ol id="trophyList" class="trophy-list"></ol>
+    <aside id="detailPane" class="detail" aria-live="polite"></aside>
+  </div>
+</section>
+
+<section id="viewRoadmap" class="view hidden">
+  <p class="roadmap-intro" id="roadmapIntro"></p>
+  <div id="roadmapStages" class="stages"></div>
+</section>
+
+<section id="viewMissables" class="view hidden">
+  <h2>Missables &amp; warnings</h2>
+  <div id="missableList" class="missable-list"></div>
+  <h3>Before you start</h3>
+  <ul class="warnings">
+    <li><strong>No mission replay, no New Game+.</strong> Keep a manual save at the start of every chapter — the game has 15 manual save slots. (PowerPyx)</li>
+    <li><strong>Cheats disable trophies and saving.</strong> Keep them off for the whole run, and note that cheats only unlock after the story. (PowerPyx)</li>
+    <li><strong>Everything else can be done after the story.</strong> Free-roam stays open after the credits, all quest givers return, and nothing on the 100% checklist is missable. (PowerPyx)</li>
+    <li><strong>Four trophies are still unconfirmed at launch.</strong> Their triggers are marked “unconfirmed” in their guides; check PowerPyx’s guide for updates as players confirm them.</li>
+  </ul>
+</section>
+
+<footer>
+  <p>Names, descriptions and grades are the official PlayStation list, as listed by Exophase and cross-checked with PSNProfiles. Hidden flags are from Exophase. Every guide is written in our own words for this guide and cites its sources beside it. No Rockstar artwork is used; the look is our own. Works fully offline — progress is saved in your browser only.</p>
+  <p>Sources: <a href="https://www.powerpyx.com/gta-6-grand-theft-auto-vi-trophy-guide-roadmap/">PowerPyx GTA 6 trophy guide</a> · <a href="https://www.exophase.com/game/grand-theft-auto-vi-psn/trophies/">Exophase trophy list</a> · <a href="https://www.planetgta6.com/en/gta-6-trophies/">Planet GTA 6 trophy list</a></p>
+</footer>
+
+<script type="module" src="app.js"></script>
+</body>
+</html>
