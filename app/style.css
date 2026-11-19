@@ -109,6 +109,8 @@ button { cursor: pointer; }
 }
 .tag.missable { border-color: #ff5d5d; color: #ff8a8a; }
 .tag.hidden-flag { border-color: var(--gold); color: var(--gold); }
+.tag.unconfirmed { border-color: #c084fc; color: #d8b4fe; }
+.unconfirmed-note { font-size: 13px; color: #d8b4fe; background: #2a1140; border: 1px solid #c084fc; border-radius: 8px; padding: 8px 10px; }
 .grade-badge { font-size: 12px; font-weight: 700; text-transform: capitalize; border-radius: 999px; padding: 3px 10px; white-space: nowrap; }
 .grade-platinum { background: #d6efff; color: #0b3a52; }
 .grade-gold { background: var(--gold); color: #4a3400; }
@@ -135,7 +137,15 @@ button { cursor: pointer; }
 .stages { display: grid; gap: 14px; }
 .stage-card { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 16px; }
 .stage-card h2 { margin: 0 0 4px; }
-.stage-card .hours { color: var(--teal); font-size: 13px; margin: 0 0 8px; }
+.stage-card .hours { color: var(--teal); font-size: 13px; margin: 0 0 4px; }
+.stage-progress { color: var(--gold); font-size: 13px; font-weight: 700; margin: 0 0 4px; }
+.stage-bar { height: 8px; background: #0c0916; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; margin: 0 0 10px; }
+.stage-bar > div { height: 100%; width: 0; background: linear-gradient(90deg, var(--pink), var(--teal)); }
+.stage-trophies span { background: #0c0916; border: 1px solid var(--line); border-radius: 999px; padding: 3px 10px; font-size: 12px; }
+.stage-trophies span.earned { border-color: var(--teal); color: var(--teal); text-decoration: line-through; }
+button:focus-visible, input:focus-visible, select:focus-visible, a:focus-visible {
+  outline: 2px solid var(--teal); outline-offset: 2px;
+}
 .stage-trophies { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
 .stage-trophies span { background: #0c0916; border: 1px solid var(--line); border-radius: 999px; padding: 3px 10px; font-size: 12px; }
 .roadmap-intro { color: var(--muted); max-width: 70ch; }

@@ -80,7 +80,10 @@ function matchesFilters(t) {
   if (earnedEl.value === 'todo' && earned.has(t.id)) return false;
   if (earnedEl.value === 'earned' && !earned.has(t.id)) return false;
   const q = searchEl.value.trim().toLowerCase();
-  if (q && !(t.name.toLowerCase().includes(q) || t.description.toLowerCase().includes(q))) return false;
+  if (q && !(t.name.toLowerCase().includes(q) || t.description.toLowerCase().includes(q) ||
+    t.guide.toLowerCase().includes(q) ||
+    (q === 'missable' && t.missable) || (q === 'hidden' && t.hidden) ||
+    (q === 'unconfirmed' && t.unconfirmed))) return false;
   return true;
 }
 
@@ -133,6 +136,12 @@ function renderList() {
       tag.textContent = 'Hidden';
       tags.append(tag);
     }
+    if (t.unconfirmed) {
+      const tag = document.createElement('span');
+      tag.className = 'tag unconfirmed';
+      tag.textContent = 'Unconfirmed';
+      tags.append(tag);
+    }
     if (t.countLabel) {
       const count = document.createElement('span');
       count.className = 'count-label';
@@ -170,6 +179,12 @@ function renderDetail() {
   official.className = 'official';
   official.textContent = displayDescription(t);
   detailEl.append(heading, badge, official);
+  if (t.unconfirmed) {
+    const warn = document.createElement('p');
+    warn.className = 'unconfirmed-note';
+    warn.textContent = 'Trigger still unconfirmed at launch — the guide below is the best current lead; check PowerPyx for updates as players confirm it.';
+    detailEl.append(warn);
+  }
   if (t.countLabel) {
     const count = document.createElement('p');
     count.className = 'count-label';
@@ -222,6 +237,15 @@ function renderRoadmap() {
     const hours = document.createElement('p');
     hours.className = 'hours';
     hours.textContent = stage.hours;
+    const done = stage.trophies.filter((id) => earned.has(id)).length;
+    const progress = document.createElement('p');
+    progress.className = 'stage-progress';
+    progress.textContent = `${done} of ${stage.trophies.length} earned`;
+    const bar = document.createElement('div');
+    bar.className = 'stage-bar';
+    const fill = document.createElement('div');
+    fill.style.width = stage.trophies.length ? `${(done / stage.trophies.length) * 100}%` : '0%';
+    bar.append(fill);
     const text = document.createElement('p');
     text.textContent = stage.text;
     const chips = document.createElement('div');
@@ -230,9 +254,10 @@ function renderRoadmap() {
       const chip = document.createElement('span');
       const t = trophyById(id);
       chip.textContent = t ? t.name : `#${id}`;
+      if (t && earned.has(id)) chip.classList.add('earned');
       chips.append(chip);
     }
-    card.append(heading, hours, text, chips);
+    card.append(heading, hours, progress, bar, text, chips);
     wrap.append(card);
   }
 }
@@ -271,6 +296,7 @@ function renderAll() {
   renderProgress();
   renderList();
   renderDetail();
+  renderRoadmap();
   renderTabs();
 }
 
